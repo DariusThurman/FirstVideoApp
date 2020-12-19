@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Zoom Video Clone by Darius</title>
+    <h1>Zoom Video Clone by Darius</h1>
+    <script src='https://meet.jit.si/external_api.js'></script>
+   </head>
+
+   <body>
+
+  <button id="start" type="button">Start</button>
+  <div id="jitsi-container">
+  </div>
+
+  <script>
+  var button = document.querySelector('#start');
+  var container = document.querySelector('#jitsi-container');
+  var api = null;
+
+  button.addEventListener('click', () => {
+      var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var stringLength = 30;
+
+      function pickRandom() {
+      return possible[Math.floor(Math.random() * possible.length)];
+      }
+
+  var randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
+
+      var domain = "meet.jit.si";
+      var options = {
+          "roomName": randomString,
+          "parentNode": container,
+          "width": 600,
+          "height": 600,
+      };
+      api = new JitsiMeetExternalAPI(domain, options);
+  });
+
+  </script>
+  </body>
+
+</html>
+
+<!--
+<script type="text/javascript" src="https://meet.jit.si/external_api.js">
+</script>
+</head>
+
+<body>
+<button type="button" name="button" id="start">Start</button>
+<div id="jitsi-container">
+</div>
+<script type="text/javascript">
+  let button = document.querySelector('#start');
+  let container = document.querySelector('jitsi-container');
+  let api = null;
+
+  button.addEventListener('click', () => {
+    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let stringLength = 30;
+
+    function pickRandom() {
+      return possible[Math.floor(Math.random() * possible.length)];
+    }
+    let randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
+
+    let domain = "meet.jit.si";
+    let options = {
+      "roomName" : randomString,
+      "parentNode" : container,
+      "width": 600,
+      "height": 600,
+    };
+    api = new JitsiMeetExternalAPI(domain, options);
+  });
+
+</script>
+</body> -->
